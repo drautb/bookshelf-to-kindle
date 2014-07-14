@@ -16,7 +16,7 @@ I dislike Bookshelf. Compared to the Kindle's native reading interface, it's ugl
 3. Start the app.
 4. Select your Kindle from the dropdown.
 5. Select your Bookshelf account from the dropdown.
-5. Click the `Transfer` button on the books you'd like to move.
+6. Click the `Transfer` button on the books you'd like to move.
 
 ## Internals
 
