@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+
+<head>
+  <meta charset="utf-8">
+  <title>Bookshelf to Kindle</title>
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+
+<body ng-controller="MainController">
+  <div class="overlay" ng-show="message">
+    <p ng-show="message">{{ message }}</p>
+  </div>
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <div class="navbar-brand">
+          <button class="btn btn-dark btn-xs" ng-click="refresh()">
+            <img src="img/refresh.png" />
+          </button>
+        </div>
+        <div class="navbar-brand">
+          <div>
+            Device
+            <select id="device-list" ng-model="currentDevice" ng-options="d for d in devices" ng-change="deviceChange()"></select>
+          </div>
+        </div>
+        <div class="navbar-brand" ng-show="selectAccount()">
+          <div>
+            Account
+            <select id="account-list" ng-model="currentAccount" ng-options="a for a in accounts" ng-change="refreshBooks()"></select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div id="primary-container">
+      <div id="book-grid">
+        <ul class="small-block-grid-5">
+          <li ng-repeat="book in books | orderBy:'title'">
+            <btk-book book-model="book" />
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="alert alert-danger calibre-warning" role="alert" ng-show="showCalibreWarning">
+      <p>
+        <strong>Hey!</strong>
+        It looks like Calibre isn't installed. We can still transfer your books, but they'll show up in 'Docs' on your Kindle, rather than in 'Books.'
+      </p>
+      <br/>
+      <button class="btn btn-success btn-sm" ng-click="downloadCalibre()">Install Calibre</button>
+      <button class="btn btn-danger btn-sm" ng-click="showCalibreWarning = false">Not Now</button>
+      <div class="clear"></div>
+    </div>
+  </div>
+</body>
+
+<script type="text/javascript" src="lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="lib/angular/angular.min.js"></script>
+
+<script type="text/javascript" src="js/main.js"></script>
+
+<script type="text/javascript" src="js/directives/BackImg.js"></script>
+<script type="text/javascript" src="js/directives/BookDirective.js"></script>
+
+<script type="text/javascript" src="js/services/LogService.js"></script>
+<script type="text/javascript" src="js/services/KindleGenService.js"></script>
+<script type="text/javascript" src="js/services/BookService.js"></script>
+<script type="text/javascript" src="js/services/DeviceService.js"></script>
+<script type="text/javascript" src="js/services/SystemService.js"></script>
+
+<script type="text/javascript" src="js/controllers/MainController.js"></script>
+<script type="text/javascript" src="js/controllers/BookController.js"></script>
+
+</html>

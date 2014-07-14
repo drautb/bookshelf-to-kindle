@@ -1,0 +1,12 @@
+<div class="book" ng-controller="BookController" ng-mouseenter="activate()" ng-mouseleave="deactivate()">
+  <div class="cover-img" back-img="{{book.previewImg}}">
+    <div ng-show="activated()" class="buttons">
+      <button ng-show="onKindle" ng-click="remove()" class="btn btn-danger btn-sm">Remove</button>
+      <button ng-show="!onKindle" ng-click="transfer()" class="btn btn-primary btn-sm">Transfer</button>
+    </div>
+    <div ng-show="busy" class="busy">
+      <img ng-src="img/ajax-loader.gif"/>
+    </div>
+  </div>
+  <p class="title" title="{{book.title}}">{{book.title}}</p>
+</div>

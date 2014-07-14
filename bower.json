@@ -1,0 +1,13 @@
+{
+  "name": "bookshelf-to-kindle",
+  "version": "0.0.1",
+  "main": "index.html",
+  "ignore": [
+    "**/.*",
+    "lib"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.2.0",
+    "angular": "~1.2.19"
+  }
+}

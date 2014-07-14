@@ -1,0 +1,115 @@
+body {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#000000), color-stop(70%,#000000), color-stop(99%,#3f3f3f));
+    background-attachment: fixed;
+    color: gray;
+    height: 600px;
+}
+
+select {
+  background-color: #444444;
+}
+
+#primary-container {
+  padding-top: 50px;
+}
+
+.alert {
+  height: 22px;
+  font-size: 10pt;
+  padding: 0px 10px;
+}
+
+.book {
+  width: 180px;
+  height: 230px;
+  padding: 0px 10px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.book .busy {
+  width: inherit;
+  height: inherit;
+  background-color: rgba(0,0,0,0.7);
+  padding: 150px 0px 0px;
+}
+
+.book .cover-img {
+  height: 215px;
+}
+
+.book .cover-img .buttons {
+  padding-top: 160px;
+}
+
+.book .title {
+  max-width: 160px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;  
+  line-height: 15px;
+  position: relative;
+}
+
+.btn-dark {
+  background-color: #444444;
+}
+
+.calibre-warning {
+  text-align: center;
+  position: fixed;
+  top: 500px;
+  margin: 0px 60px;
+  padding: 0px 10px;
+}
+
+.clear {
+  clear: both;
+}
+
+.navbar-header * {
+  font-size: 10pt;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1000px;
+  height: 600px;
+  padding: 200px 100px;
+  background-color: rgba(0, 0, 0, 0.9);
+  font-size: 20pt;
+  text-align: center;
+}
+
+/**
+ * Block Grid adaptation. 
+ * http://stackoverflow.com/questions/23204785/creating-a-foundation-style-block-grid-in-bootstrap-3
+ */
+[class*="block-grid-"] {
+    display: block;
+    padding: 0;
+    margin: 0 -0.55556rem;
+}
+
+[class*="block-grid-"] > li {
+    display: block;
+    height: auto;
+    float: left;
+    padding: 0 0.55556rem 1.11111rem;
+}
+
+.small-block-grid-5 > li {
+    width: 20%;
+    list-style: none;
+}
+
+.small-block-grid-5 > li:nth-of-type(1n) {
+    clear: none;
+}
+
+.small-block-grid-5 > li:nth-of-type(5n+1) {
+    clear: both;
+}
