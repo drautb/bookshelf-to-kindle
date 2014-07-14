@@ -7,7 +7,8 @@ var logDir = path.join(userHome, ".bookshelf-to-kindle", "logs");
 
 mkdirp(logDir);
 
-var logFile = path.join(logDir, new Date().toString());
+var logFilename = new Date().toString().replace(/(\s+|:|\(|\))+/g, '-').replace(/-$/, ''); 
+var logFile = path.join(logDir, logFilename);
 
 log4js.configure({
   appenders: [

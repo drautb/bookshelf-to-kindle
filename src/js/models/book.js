@@ -3,9 +3,8 @@ var path = require('path'),
     glob = require('glob');
 
 function Book(pathToBook) {
-  this.id = parseInt(pathToBook.match(/books\/(\d+)$/)[1], 10);
   this.pathToBook = pathToBook;
-  this.previewImg = path.join(pathToBook, 'db', 'preview.png');
+  this.previewImg = path.join(pathToBook, 'db', 'preview.png').replace(/\\/g, '/');
 
   this.pathToOpf = glob.sync(path.join(pathToBook, '**', '*.opf'))[0];
 

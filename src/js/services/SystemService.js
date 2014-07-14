@@ -5,7 +5,7 @@ var fs = require('fs'),
     exec = require('child_process').exec;
 
 function getFSRoot() {
-  return (os.platform() === 'win32') ? process.cwd().split(path.sep)[0] : '/';
+  return (os.platform() === 'win32') ? '' : '/';
 }
 
 function getAppDataDir(logger) {
@@ -32,12 +32,22 @@ angular.module('app').service('SystemService', function(LogService) {
   }
 
   this.refreshDevices = function(cb) {
-    this.readdir(this.devicesLocation, cb);
+    if (os.platform() === 'win32') {
+      var disks = [];
+      exec('wmic logicaldisk get name', function(error, stdout, stderr) {
+        disks = stdout.split(/\s+/).slice(1,-1);
+        cb(disks);
+      });
+    } else {
+      this.readdir(this.devicesLocation, cb);
+    }
   };
 
   this.commandExists = function(command, cb) {
     var child = exec(command, function(error, stdout, stderr) {
-      if (error !== null && error.toString().match(/command not found/)) {
+      if (error !== null && 
+          (error.toString().match(/command not found/) || 
+              error.toString().match(/not recognized/))) {
         cb(false);
       } else {
         cb(true);
