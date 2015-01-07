@@ -1,4 +1,4 @@
-angular.module("app").controller("BookController", ["$scope", "DeviceService", "SystemService", "BookService", function($scope, DeviceService, SystemService, BookService) {
+angular.module("app").controller("BookController", ["$scope", "BookshelfService", "SystemService", "BookService", function($scope, BookshelfService, SystemService, BookService) {
 
   $scope.activate = function() {
     $scope.hover = true;
@@ -30,7 +30,7 @@ angular.module("app").controller("BookController", ["$scope", "DeviceService", "
       $scope.busy = false;
       $scope.$apply();
     });
-  }
+  };
 
   $scope.hover = false;
 

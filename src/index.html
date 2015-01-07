@@ -20,12 +20,6 @@
             <img src="img/refresh.png" />
           </button>
         </div>
-        <div class="navbar-brand">
-          <div>
-            Device
-            <select id="device-list" ng-model="currentDevice" ng-options="d for d in devices" ng-change="deviceChange()"></select>
-          </div>
-        </div>
         <div class="navbar-brand" ng-show="selectAccount()">
           <div>
             Account
@@ -70,10 +64,12 @@
 <script type="text/javascript" src="js/services/LogService.js"></script>
 <script type="text/javascript" src="js/services/KindleGenService.js"></script>
 <script type="text/javascript" src="js/services/BookService.js"></script>
-<script type="text/javascript" src="js/services/DeviceService.js"></script>
+<script type="text/javascript" src="js/services/BookshelfService.js"></script>
 <script type="text/javascript" src="js/services/SystemService.js"></script>
 
 <script type="text/javascript" src="js/controllers/MainController.js"></script>
 <script type="text/javascript" src="js/controllers/BookController.js"></script>
+
+<script type="text/javascript" src="js/models/Book.js"></script>
 
 </html>

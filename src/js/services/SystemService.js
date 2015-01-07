@@ -23,30 +23,16 @@ angular.module('app').service('SystemService', function(LogService) {
   var fsRoot = getFSRoot();
 
   this.appDataDir = getAppDataDir(LogService);
-  this.devicesLocation = fsRoot;
-  
-  if (platform === 'darwin') {
-    this.devicesLocation = path.join(fsRoot, 'Volumes');
-  } else if (platform === 'linux') {
-    this.devicesLocation = path.join(fsRoot, 'media');
-  }
+  this.pathToDesktop = path.join(process.env[(platform == "win32") ? "USERPROFILE" : "HOME"], "Desktop");
 
-  this.refreshDevices = function(cb) {
-    if (os.platform() === 'win32') {
-      var disks = [];
-      exec('wmic logicaldisk get name', function(error, stdout, stderr) {
-        disks = stdout.split(/\s+/).slice(1,-1);
-        cb(disks);
-      });
-    } else {
-      this.readdir(this.devicesLocation, cb);
-    }
-  };
+  if (platform == "darwin") {
+    process.env.PATH = process.env.PATH + ":/Applications/calibre.app/Contents/MacOS";
+  }
 
   this.commandExists = function(command, cb) {
     var child = exec(command, function(error, stdout, stderr) {
-      if (error !== null && 
-          (error.toString().match(/command not found/) || 
+      if (error !== null &&
+          (error.toString().match(/command not found/) ||
               error.toString().match(/not recognized/))) {
         cb(false);
       } else {
