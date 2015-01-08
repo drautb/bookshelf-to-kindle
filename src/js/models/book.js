@@ -1,6 +1,5 @@
 var path = require('path'),
     fs = require('fs'),
-    os = require('os'),
     glob = require('glob'),
     mkdirp = require('mkdirp');
 
@@ -15,12 +14,17 @@ function Book(pathToBook) {
 
   this.mobiFilename = this.title.toLowerCase().replace(/\W/g, '-').replace(/--+/g, '-') + '.mobi';
 
-  var kindleBooksPath = (os.platform() === 'win32') ? '' : '/';
   var segments = pathToBook.split(path.sep);
+  if (os.platform() === "win32") {
+    segments[0] = "";
+  }
+
+  var kindleBooksPath = path.join((os.platform() === 'win32') ? '' : '/', path.sep);
   for (var s=0; s<segments.length; s++) {
     kindleBooksPath = path.join(kindleBooksPath, segments[s]);
     if (segments[s] === "com.deseretbook.bookshelf") {
       kindleBooksPath = path.join(kindleBooksPath, segments[s+1], "converted-books");
+      console.log("Calling mkdirp with " + kindleBooksPath);
       mkdirp.sync(kindleBooksPath);
       break;
     }
