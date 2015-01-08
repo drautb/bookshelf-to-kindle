@@ -16,7 +16,7 @@ function Book(pathToBook) {
   this.mobiFilename = this.title.toLowerCase().replace(/\W/g, '-').replace(/--+/g, '-') + '.mobi';
 
   var kindleBooksPath = (os.platform() === 'win32') ? '' : '/';
-  var segments = pathToBook.split("/");
+  var segments = pathToBook.split(path.sep);
   for (var s=0; s<segments.length; s++) {
     kindleBooksPath = path.join(kindleBooksPath, segments[s]);
     if (segments[s] === "com.deseretbook.bookshelf") {
