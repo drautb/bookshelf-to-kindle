@@ -1,3 +1,7 @@
+# NOTICE
+
+This project will no longer function. It was built on the assumption that the Kindle would be mounted as a USB Mass Storage Device, where the app could access the Kindle's filesystem directly. However, modern versions of Android don't support this mounting method.
+
 # Bookshelf to Kindle
 
 A simple app built for the express purpose of moving eBooks from [Deseret Book's Bookshelf App][1] to your Kindle's native eBook collection.
