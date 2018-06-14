@@ -1,6 +1,6 @@
-# NOTICE
+# NOTICE (June 14th, 2018)
 
-This project will no longer function. It was built on the assumption that the Kindle would be mounted as a USB Mass Storage Device, where the app could access the Kindle's filesystem directly. However, modern versions of Android don't support this mounting method.
+This project will no longer function. It was built on the assumption that the Kindle would be mounted as a USB Mass Storage Device, where the app could access the Kindle's filesystem directly. However, modern versions of Android don't support this mounting method as of several years ago.
 
 # Bookshelf to Kindle
 
